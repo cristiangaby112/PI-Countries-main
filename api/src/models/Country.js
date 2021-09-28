@@ -6,7 +6,6 @@ module.exports = (sequelize) => {
   sequelize.define('country', {
     id: {
       type: DataTypes.STRING,
-      defaultvalue: DataTypes.STRING,
       allowNull: false,
       primaryKey: true
     },
@@ -15,7 +14,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    imagen_de_la_bandera: {
+    image: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -39,11 +38,11 @@ module.exports = (sequelize) => {
     //   dataType: DataTypes.INTEGER,
     //   allowNull: true,
     // },
-    createInDb: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultvalue: true,
-    }
+    // createInDb: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultvalue: true,
+    // }
 
   });
 };
