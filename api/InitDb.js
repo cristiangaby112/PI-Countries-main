@@ -15,6 +15,8 @@ const db = async() => {
                         region: country.region,
                         capital: country.capital,
                         image: country.flag,
+                        subregion: country.subregion,
+                        area: country.area,
                     })
                     
             }
