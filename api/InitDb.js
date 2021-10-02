@@ -9,14 +9,16 @@ const db = async() => {
             const countries = JSON.parse(data);
             //console.log(countries);
             for(let country of countries) {
+                //console.log(country.capital, country.name)
                     await Country.create({
                         id: country.alpha3Code,
                         name:country.name,
                         region: country.region,
-                        capital: country.capital,
+                        capital: country.capital ? country.capital : country.name,
                         image: country.flag,
                         subregion: country.subregion,
                         area: country.area,
+                        population: country.population,
                     })
                     
             }

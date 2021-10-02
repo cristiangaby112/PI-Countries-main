@@ -34,15 +34,18 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-    // poblacion:{
-    //   dataType: DataTypes.INTEGER,
-    //   allowNull: true,
-    // },
+    population: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    }
     // createInDb: {
     //   type: DataTypes.BOOLEAN,
     //   allowNull: false,
     //   defaultvalue: true,
     // }
 
-  });
+  },
+  {
+    timestamps: false,
+});
 };
