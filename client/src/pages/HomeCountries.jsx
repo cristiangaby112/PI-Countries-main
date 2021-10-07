@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries, filterCountriesByRegion, filterActivity } from '../actions/index';
+import { getCountries, filterCountriesByRegion, filterActivity, orderByName, orderByPopulation } from '../actions/index';
 import {Link} from 'react-router-dom';
 import Card from '../components/Card';
 import Paginado from '../components/Paged';
+import SearchBar from '../components/SearchBar';
 
 export default function HomeCountries(){
     const dispatch = useDispatch();
@@ -18,6 +19,10 @@ export default function HomeCountries(){
     const indexOfLastCountry = currentPages * countriesPerPage
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
+    // estado local para el ordenamiento
+    const [order, setOrder] = useState("");
+    // estado local para filtros
+    //const [filter, setFilter] = useState("")
     //PAGINADO
 
     const paginado = (pagesNumber) => {
@@ -25,10 +30,6 @@ export default function HomeCountries(){
     }
 
 
-    // estado local para el ordenamiento
-    //const [order, setOrder] = useState("ASC");
-    // estado local para filtros
-    //const [filter, setFilter] = useState("")
 
     useEffect(() =>{
         dispatch(getCountries());
@@ -42,7 +43,18 @@ export default function HomeCountries(){
     function handleFilterActivity(e){
         dispatch(filterActivity(e.target.value))
     }
-
+    function handleSortByName(e){
+        e.preventDefault()
+        dispatch(orderByName(e.target.value))
+        setCountriesPage(10)
+        setOrder(`Ordenado ${e.target.value}`)
+    }
+    function handleSortByPopulation(e){
+        e.preventDefault()
+        dispatch(orderByPopulation(e.target.value))
+        setCountriesPage(10)
+        setOrder(`Ordenado ${e.target.value}`)
+    }
 
     return(
         <div>
@@ -60,18 +72,18 @@ export default function HomeCountries(){
                 </select>
             
                 <select onChange={e => handleFilterActivity(e)}>
-                    <option value="All">Todos</option>
+                    <option value="All">Todas las actividades</option>
                     <option value="Activity">Activity</option>
                 </select>
             
-                <select >
-                    <option value="ASC">Ascendente</option>
-                    <option value="DESC">Descendente</option>
+                <select onChange={e => handleSortByName(e)}>
+                    <option value="ASC">Ascendente por nombre</option>
+                    <option value="DESC">Descendente por nombre</option>
                 </select>
             
-                <select >
-                    <option value="ASC">Ascendente</option>
-                    <option value="DESC">Descendente</option>
+                <select onChange={e => handleSortByPopulation(e)}>
+                    <option value="ASC">Ascendente por poblacion</option>
+                    <option value="DESC">Descendente por poblacion</option>
                 </select>
             </div>
             <Paginado 
@@ -79,6 +91,7 @@ export default function HomeCountries(){
                 allCountries={allCountries.length}
                 paginado={paginado}
             />
+            <SearchBar/>
             {currentCountries?.map((c) =>{
                 //let kj = 0;
                 return(

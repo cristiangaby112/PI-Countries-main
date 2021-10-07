@@ -4,30 +4,66 @@ const {Country, Activity} = require('../db');
 
 const getCountries = async (req, res) => {
     try {
-        const { name }= req.query;
+        const { name, pages, order, filter }= req.query;
         if(!name){
         const countries = await Country.findAll({
+            // limit: 10,
             include: {
                 model: Activity
             }
         })
         res.json(countries)
-    }else{
-        //console.log(name);
-        const countrySearch = await Country.findAll({
-            where: {
-                name:   {[Op.iLike]: `%${name}%`},
+        } 
+        else if(name){
+            //console.log(name);
+            const countrySearch = await Country.findAll({
+                where: {
+                    name:   {[Op.iLike]: `%${name}%`},
+                },
+                include: {
+                    model: Activity
+                }
+            })
+            if(countrySearch.length > 0){
+                res.json(countrySearch);
+            }else{
+                res.status(404).send("Country not found");
             }
-        })
-        if(countrySearch.length > 0){
-            res.json(countrySearch);
-        }else{
-            res.status(404).send("Country not found");
         }
-        
-
-    }
-        
+        // else if(filter){
+        //     //console.log("esto es filter", filter)
+        //     const filters = await Country.findAll({
+        //         where:{
+        //             region: {[Op.iLike]: `%${filter}%`},
+        //         },
+        //     })
+        //         res.json(filters);
+            
+        // }
+        // else if(order){
+        //     const countries = await Country.findAll({
+        //         limit: 10,
+        //         offset: pages,
+        //         order: [
+        //             ['name' || 'population', order],
+        //             //['population', order]
+                    
+        //         ],
+        //         include: {
+        //             model: Activity
+        //         }
+        //     });
+        //     res.json(countries);
+        // }else{
+        //     const countries = await Country.findAll({
+        //         limit: 10,
+        //         offset: pages,
+        //         include: {
+        //             model: Activity
+        //         }
+        //     })
+        //     res.json(countries)
+        // }
     } catch (error) {
         console.error(error);
     }

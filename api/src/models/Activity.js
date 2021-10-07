@@ -13,14 +13,18 @@ module.exports = (sequelize) => {
             allowNull: true,
         },
         duration: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: true,
         },
         season:{
             type: DataTypes.ENUM("Verano", "Otoño", "Invierno", "Primavera"),
             allowNull: true,
+        },
+        createdInDb:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true,
         }
-        
     },
     {
         timestamps: false,
