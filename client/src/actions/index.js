@@ -8,6 +8,7 @@ export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 export const ORDER_BY_POPULATION = 'ORDER_BY_POPULATION'
 export const GET_COUNTRIES_NAME = 'GET_COUNTRIES_NAME'
 export const GET_ACTIVITIES = 'GET_ACTIVITIES'
+export const GET_DETAIL = 'GET_DETAIL'
 //ACTIONS
 
 export function getCountries(){
@@ -41,6 +42,21 @@ export function getActivity(){
             type: 'GET_ACTIVITIES',
             payload: json.data
         })
+    }
+}
+
+export function getDetail(id){
+    return async (dispatch) => {
+        try {
+            var json = await axios.get('http://localhost:3001/countries/' + id)
+            console.log('soy el  detalle', json)
+            return dispatch({
+                type: 'GET_DETAIL',
+                payload: json.data
+            })
+        }catch (e) {
+            console.error(e)
+        }
     }
 }
 

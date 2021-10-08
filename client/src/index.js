@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './store/index';
 
+//ESTILOS GLOBALES
+import './css/normalize.css'
+import './css/Global.module.css'
 
 ReactDOM.render(
   <Provider store={store}>

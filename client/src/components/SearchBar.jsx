@@ -3,7 +3,7 @@ import React from 'react';
 import{useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { getCountriesName } from '../actions/index';
-
+import {Link} from 'react-router-dom'
 
 export default function SearchBar(){
     const dispatch = useDispatch();
@@ -17,22 +17,24 @@ export default function SearchBar(){
         console.log(name)
     }
     function handleSubmit(e){
-        e.preventDefault();
         dispatch(getCountriesName(name))
         //console.log('el boton',name)
         setName('')
-        //console.log('el boton',name)
+        e.preventDefault();
+        console.log('el boton')
     }
 
     return(
-        <div>
+        <form onSubmit={(e) => handleSubmit(e)}>
             <input 
             type="text"
             placeholder="Search..."
             onChange= {(e) => handleInputChange(e)}
-            
+            value= {name}
             />
-            <button type="submit" onClick={(e) => handleSubmit(e)}>Buscar</button>
-        </div>
+            <Link to="/countries/search">
+            <button type="submit">Buscar</button>
+            </Link>
+        </form>
     )
 }

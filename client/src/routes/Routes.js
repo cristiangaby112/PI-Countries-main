@@ -4,13 +4,14 @@ import HomeCountries from "../pages/HomeCountries";
 import MainPage from "../pages/MainPage";
 import CreateActivity from "../components/CreateActivity"
 import ActivitiesPage from "../pages/ActivitiesPage"
-
+import Detail from '../components/Detail'
 const Routes = () => {
     return(
         <Switch>
             <Route exact path="/" component={MainPage} />
-            <Route path="/countries" component={HomeCountries}/>
-            <Route path="/activities/list" component={ActivitiesPage}/>
+            <Route exact path="/countries" component={HomeCountries}/>
+            <Route path="/countries/:id" component={Detail}/>
+            <Route path="/activity/list" component={ActivitiesPage}/>
             <Route path="/activity/create" component={CreateActivity}/>
 
         </Switch>

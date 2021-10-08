@@ -3,13 +3,14 @@ import {Link, useHistory} from 'react-router-dom';
 import {postActivity, getActivity} from '../actions/index';
 import {useDispatch, useSelector} from 'react-redux';
 import { getCountries } from '../actions/index';
+import NavBar from '../components/NavBar'
 //import SearchBar from '../components/SearchBar';
 
 function validate(input){
     let errors = {};
-    if(input.name === ""){
+    if(!input.name){
         errors.name = "Se requiere una Actividad"
-    }else if(!input.difficulty){
+    }else if(!input.difficulty <= 0 ){
         errors.difficulty = "Se requiere una Dificultad"
     }else if(!input.duration){
         errors.duration = "Se requiere una Duracion"
@@ -58,6 +59,13 @@ export default function CreateActivity(){
         console.log(input)
     }
 
+    function handleDelete(el){
+        setInput({
+            ...input,
+            countries: input.countries.filter(co => co !== el)
+        })
+    }
+
     function handleCheckboxChange(e){
         if(e.target.checked){
             setInput({
@@ -79,7 +87,7 @@ export default function CreateActivity(){
         e.preventDefault()
         console.log(input)
         dispatch(postActivity(input))
-        alert('Personaje Creado')
+        alert('Pais Creado')
         setInput(
             {
                 name: '',
@@ -94,6 +102,7 @@ export default function CreateActivity(){
 
     return (
             <div>
+                <NavBar/>
                 <Link to='/countries'><button>Volver</button></Link>
                 <h1>Crear tu Actividad</h1>
                 <form onSubmit={(e) => handleSubmit(e)}>
@@ -120,8 +129,8 @@ export default function CreateActivity(){
                         onChange={(e) =>handleInputChange(e)}
                         />
                         {
-                            errors.name && (
-                                <p>{errors.name}</p>
+                            errors.difficulty && (
+                                <p>{errors.difficulty}</p>
                             )
                         }
                     </div>
@@ -134,8 +143,8 @@ export default function CreateActivity(){
                         onChange={(e) =>handleInputChange(e)}
                         />
                         {
-                            errors.name && (
-                                <p>{errors.name}</p>
+                            errors.duration && (
+                                <p>{errors.duration}</p>
                             )
                         }
                     </div>
@@ -178,6 +187,14 @@ export default function CreateActivity(){
                         <ul><li>{input.countries.map(el => el + ',')}</li></ul>
                     <button type="submit">Create</button>
                 </form>
+                {
+                    input.countries.map(el =>
+                            <div>
+                                <p>{el}</p>
+                                <button onClick={() => handleDelete(el)}>x</button>
+                            </div>
+                        )
+                }
             </div>
 
     )

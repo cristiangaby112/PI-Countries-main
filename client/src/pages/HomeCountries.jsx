@@ -5,8 +5,8 @@ import { getCountries, filterCountriesByRegion, filterActivity, orderByName, ord
 import {Link} from 'react-router-dom';
 import Card from '../components/Card';
 import Paginado from '../components/Paged';
+import NavBar from '../components/NavBar';
 import SearchBar from '../components/SearchBar';
-
 export default function HomeCountries(){
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
@@ -20,6 +20,7 @@ export default function HomeCountries(){
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry)
     // estado local para el ordenamiento
+    // eslint-disable-next-line no-unused-vars
     const [order, setOrder] = useState("");
     // estado local para filtros
     //const [filter, setFilter] = useState("")
@@ -58,8 +59,9 @@ export default function HomeCountries(){
 
     return(
         <div>
+            <NavBar/>
             <h1>Countries</h1>
-
+            <SearchBar/>
             <div>
                 <select onChange={e => handleFilterRegion(e)}>
                     <option value="All">Todos</option>
@@ -91,13 +93,13 @@ export default function HomeCountries(){
                 allCountries={allCountries.length}
                 paginado={paginado}
             />
-            <SearchBar/>
-            {currentCountries?.map((c) =>{
-                //let kj = 0;
+            
+            {currentCountries?.map((c, i) =>{
+                
                 return(
-                    <Fragment>
+                    <Fragment key={c.id}>
                         <Link to={'/countries/' + c.id}>
-                        <Card name={c.name} image={c.image} region={c.region} key={c.id} />
+                        <Card name={c.name} image={c.image} region={c.region}/>
                         </Link>
                     </Fragment>
                 );
