@@ -1,24 +1,26 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-//import SearchBar from '../components/SearchBar';
-
+import SearchBar from '../components/SearchBar';
+import s from '../css/NavBar.module.css'
 
 export default function NavBar(){
 
 
     return(
-        <nav>
-            <h1>By Cristian Barriento</h1>
-            <Link to='/countries'>
-                <h2>Countries</h2>
+        <nav className={s.navbar}>
+            <Link to='/' className={s.link_title}>
+            <h1 className={s.Title}>By Cristian Barriento</h1>
             </Link>
-            <Link to='/activity/list'>
-                <h2>Activity</h2>
+            <Link to='/countries' className={s.link}>
+                <h2 className={s.h1}>Countries</h2>
             </Link>
-            <Link to='/activity/create'>
-                <h2>Create Activity</h2>
+            <Link to='/activity/list' className={s.link}>
+                <h2 className={s.h1}>Activity</h2>
             </Link>
-            {/* //<SearchBar/> */}
+            <Link to='/activity/create' className={s.link}>
+                <h2 className={s.h1}>Create Activity</h2>
+            </Link>
+            <SearchBar/>
         </nav>
     )
 }

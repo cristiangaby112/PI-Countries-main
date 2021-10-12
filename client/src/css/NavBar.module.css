@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
+
+.Title{
+  font-family: 'Birthstone', cursive;
+}
+.link_title{
+  text-decoration: none;
+  color: #000000;
+  transition: transform .6s,-webkit-transform .6s;
+}
+.link_title:hover{
+  transform: scale(1.1);
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #b9e2db;
+  position:sticky;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}
+
+.link{
+  text-decoration: none;
+  color: #333030;
+  border-radius: 10px;
+}
+.link:hover{
+  background-color: rgba(255, 255, 255, 0.486);
+}
+.h1{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}

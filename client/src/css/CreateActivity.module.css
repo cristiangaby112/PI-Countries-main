@@ -1,0 +1,82 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: #fff;
+    padding: 2.5em;
+    margin: 2em 0;
+}
+.form{
+    flex-basis: 40%;
+    overflow: hidden;
+    background-color: #b9e2db;
+    border-radius: .8rem;
+    box-shadow: 5px 5px 15px 5px #141e27;
+    padding: 1em;
+}
+.container_inputs{
+    margin: 1.6em 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.container_input{
+    width: 75%;
+    margin: .9em 0;
+    display: flex;
+    flex-direction: column;
+}
+.containert::before ::after{
+  box-sizing: inherit;
+}
+.label{
+    font-size: 1.4em;
+    margin: .6em 0;
+    color: #333030;
+}
+.input{
+    font-size: 1.5em;
+    padding: 0.4em;
+    border: none;
+    outline: none;
+    background-color: #D1E8E4;
+    border-radius: 5px;
+    color: #fff;
+}
+.input::placeholder{
+  font-size: 0.7em;
+  
+}
+.Title{
+  text-align: center;
+  color: #333030;
+}
+.checkbox{
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+    font-size: 1rem;
+}
+.checkbox2{
+    flex-basis: 25%;
+    justify-content: center;
+    margin: .9rem 0;
+    display: flex;
+    align-items: center;
+}
+.inputcheckbox{
+  margin: 0 .5em;
+  cursor: pointer;
+}
+.labelinput{
+  font-size: 1.3em;
+  cursor: pointer;
+}
+.p{
+    font-size: 1.6em;
+    margin: .6em 0;
+}

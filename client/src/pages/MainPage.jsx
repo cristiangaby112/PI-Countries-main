@@ -4,12 +4,12 @@ import s from "../css/MainPage.module.css";
 export default function MainPage() {
 		return (
 			<div className={s.Main}>
-				<div className={s.btcdiv}>
-					<h1 className={s.title}>Bienvenidos</h1>
+					<h1 className={s.Title}>Welcome</h1>
+				{/* <div className={s.btcdiv}> */}
 					<Link to="/countries">
-						<button>Ingresar</button>
+						<button className={s.btn}>Go Home</button>
 					</Link>
-				</div>
+				{/* </div> */}
 			</div>
 		);
 }

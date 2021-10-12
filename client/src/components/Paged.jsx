@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import s from '../css/Paged.module.css'
 
 
 export default function Paginado ({countriesPerPage, allCountries, paginado}) {
@@ -10,17 +11,17 @@ export default function Paginado ({countriesPerPage, allCountries, paginado}) {
 
 
     return(
-        <nav>
-            <ul>
+        // <nav>
+            <div  className={s.paginado}>
                 {
                     pageNumbers &&
                     pageNumbers.map(number => (
-                        <li key={number}>
-                        <button  onClick={() => paginado(number)}>{number}</button>
-                        </li>
+                        <Fragment key={number}>
+                        <button className={s.btn}  onClick={() => paginado(number)}>{number} </button>
+                        </Fragment>
                     ))
                 }
-            </ul>
-        </nav>
+            </div>
+        // </nav>
     )
 }

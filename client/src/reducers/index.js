@@ -44,11 +44,22 @@ function rootReducer(state = initialState, action) {
                 countries: regionFiltered,
             }
         case FILTER_ACTIVITY:
+            let c = []
+            const activitycountry= state.allPaises.map(el => {
+                if(el.activities.length > 0) {
+                    const activitysearch= el.activities.find(el => el.id === parseInt(action.payload))
+										console.log(activitysearch)
+                    if(activitysearch) {
+                        c.push(el)
+												return el
+                    }
+                }
+                return undefined;
+            });
             
-            const activity= action.payload === 'Activity' ? state.activities : state.activities.filter(el => el.name)
             return{
                 ...state,
-                activities: action.payload === 'All' ? state.allPaises : activity
+                countries: action.payload === 'All' ? state.countries : c
             }
         case ORDER_BY_NAME:
             let sortedArr = action.payload === 'ASC' ?
