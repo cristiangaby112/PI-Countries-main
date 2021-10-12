@@ -152,7 +152,7 @@ export default function CreateActivity() {
                   value="Verano"
                   onChange={(e) => handleCheckboxChange(e)}
                 />
-                <label for="Verano" className={s.labelinput}>Summer</label>
+                <label htmlFor="Verano" className={s.labelinput}>Summer</label>
               </div>
               <div className={s.checkbox2}>
                 <input
@@ -163,7 +163,7 @@ export default function CreateActivity() {
                   value="Otoño"
                   onChange={(e) => handleCheckboxChange(e)}
                 />
-                <label for="Otoño" className={s.labelinput}>Autumn</label>
+                <label htmlFor="Otoño" className={s.labelinput}>Autumn</label>
               </div>
               <div className={s.checkbox2}>
                 <input
@@ -174,7 +174,7 @@ export default function CreateActivity() {
                   value="Invierno"
                   onChange={(e) => handleCheckboxChange(e)}
                 />
-                <label for="Invierno" className={s.labelinput}>Winter</label>
+                <label htmlFor="Invierno" className={s.labelinput}>Winter</label>
               </div>
               <div className={s.checkbox2}>
                 <input
@@ -185,13 +185,13 @@ export default function CreateActivity() {
                   value="Primavera"
                   onChange={(e) => handleCheckboxChange(e)}
                 />
-                <label for="Primavera" className={s.labelinput}>Spring</label>
+                <label htmlFor="Primavera" className={s.labelinput}>Spring</label>
               </div>
             </div>
           </div>
           <select onChange={(e) => handleSelect(e)}>
             {allCountries.map((c) => {
-              return <option value={c.name}>{c.name}</option>;
+              return <option key={c.id} value={c.name}>{c.name}</option>;
             })}
           </select>
           <ul>

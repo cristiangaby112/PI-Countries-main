@@ -12,7 +12,7 @@ const getCountries = async (req, res) => {
                 model: Activity
             }
         })
-        res.json(countries)
+        res.status(200).json(countries)
         } 
         else if(name){
             //console.log(name);
