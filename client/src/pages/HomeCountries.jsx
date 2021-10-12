@@ -85,7 +85,7 @@ export default function HomeCountries() {
 
       <div className={s.filter}>
         <select onChange={(e) => handleFilterRegion(e)} className={s.select}>
-          <option value="All">Todos</option>
+          <option value="All">All</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>
           <option value="Asia">Asia</option>
@@ -109,7 +109,7 @@ export default function HomeCountries() {
         <select onChange={(e) => handleSortByName(e)} className={s.select}>
           <option disable="">Sorted by Name</option>
           <option value="ASC">Ascending by Name</option>
-          <option value="DESC">Descent by </option>
+          <option value="DESC">Descent by Name </option>
         </select>
 
         <select

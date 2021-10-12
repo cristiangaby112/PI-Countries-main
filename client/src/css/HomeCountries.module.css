@@ -8,6 +8,8 @@
   justify-content: space-evenly;
 }
 
+
+
 .select{
   
   background-color: #ffffffde;
@@ -95,4 +97,7 @@
 
 .btn:focus {
 box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+.option:disabled{
+  color: -internal-light-dark(graytext, rgb(170, 170, 170));
 }

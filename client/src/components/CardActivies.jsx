@@ -1,14 +1,16 @@
 import React from 'react';
-
+import s from '../css/CardAct.module.css'
 
 
 export default function CardActivies({name, difficulty, duration, season}){
     return (
-        <div>
-            <h1>{name}</h1>
-            <p>{difficulty}</p>
-            <p>{duration}</p>
-            <p>{season}</p>
+        <div className={s.list}>
+            <h4 className={s.h4}>{name}</h4>
+            
+                <p className={s.p}>Difficulty: {difficulty}</p>
+                <p className={s.p}>Duration: {duration}</p>
+                <p className={s.p}>Season: {season}</p>
+            
         </div>
     );
 }

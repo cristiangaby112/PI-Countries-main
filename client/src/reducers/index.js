@@ -46,7 +46,9 @@ function rootReducer(state = initialState, action) {
         case FILTER_ACTIVITY:
             let c = []
             // eslint-disable-next-line no-unused-vars
-            const activitycountry= state.allPaises.map(el => {
+						// console.log(c)
+            // eslint-disable-next-line no-unused-vars
+            const activityCountry= state.allPaises.map(el => {
                 if(el.activities.length > 0) {
                     const activitysearch= el.activities.find(el => el.id === parseInt(action.payload))
 										console.log(activitysearch)

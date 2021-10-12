@@ -71,12 +71,188 @@
 .inputcheckbox{
   margin: 0 .5em;
   cursor: pointer;
+
 }
 .labelinput{
   font-size: 1.3em;
   cursor: pointer;
+  color: #333030;
 }
 .p{
     font-size: 1.6em;
     margin: .6em 0;
+    color: #333030;
+}
+
+.card_select{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.select{
+  
+  background-color: #ffffffde;
+  color: #000000;
+  margin-bottom: 5px;
+  padding: 10px;
+  width: 480px;
+  height: 45px;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, .5);
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  outline: none;
+  /* -moz-appearance: none;
+  appearance: none;
+  letter-spacing: 0.5px; */
+  background-image: url('../image/down-arrow.png');
+  background-repeat: no-repeat;
+  background-size:20px ;
+  background-position: 450px 14px;
+}
+.select::-ms-expand{
+  display: none;
+}
+.select:hover{
+  outline: none;
+  border: 1px solid #805efa;
+}
+
+.optioni{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-basis: 12em;
+    height: 2em;
+    padding: .5em .4em;
+    margin: .5em 0;
+    border-radius: 3px;
+    background-color: #2b3945;
+    box-shadow: 1px 1px 5px 2px #141e27;
+}
+
+.divselect{
+    width: 100%;
+    box-shadow: inset 1px 2px 6px 5px #141e27;
+    border-radius: 5px;
+    min-height: 15em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1em 0;
+
+}
+.btn{
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 2px 7px 3px #141e27;
+    background: #da4c47;
+    margin: 0 .3em;
+    box-shadow: none;
+    font-size: 1.3em;
+    font-weight: 600;
+    padding: .1em .4em;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+.div_btn {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+}
+.btn_create {
+  border:#333030;
+  align-self: center;
+  background-color: transparent;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #333030;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-weight: bolder;
+  font-size: 1rem;
+  line-height: 23px;
+  outline: none;
+  padding: .75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  /* margin-bottom: 4em; */
+}
+.btn_create:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.btn_create:focus {
+box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+.div_volver{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn_volver{
+  border:#333030;
+  align-self: center;
+  background-color: transparent;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #333030;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-weight: bolder;
+  font-size: 1rem;
+  line-height: 23px;
+  outline: none;
+  padding: .75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 4em;
+}
+
+.btn_volver:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.btn_volver:focus {
+box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }

@@ -189,26 +189,38 @@ export default function CreateActivity() {
               </div>
             </div>
           </div>
-          <select onChange={(e) => handleSelect(e)}>
-            {allCountries.map((c) => {
-              return <option key={c.id} value={c.name}>{c.name}</option>;
-            })}
-          </select>
+          <div className={s.card_select}>
+            <select className={s.select} onChange={(e) => handleSelect(e)}>
+              {allCountries.map((c) => {
+                return <option className={s.option} key={c.id} value={c.id}>{c.name}</option>;
+              })}
+            </select>
+          </div>
           <ul>
             <p>{input.countries.map((el) => el + ", ")}</p>
           </ul>
-          <button type="submit">Create</button>
-        </form>
+          <div className={s.divselect}>
         {input.countries.map((el) => (
-          <div>
-            <p>{el}</p>
-            <button onClick={() => handleDelete(el)}>x</button>
+          <div className={s.optioni}>
+            <div>
+              <p>{el}</p>
+            </div>
+            <div>
+              <button className={s.btn} onClick={() => handleDelete(el)}>x</button>
+            </div>
           </div>
         ))}
+        </div>
+          <div className={s.div_btn}>
+            <button className={s.btn_create} type="submit">Create</button>
+          </div>
+        </form>
       </div>
-      <Link to="/countries">
-        <button>Volver</button>
-      </Link>
+      <div className={s.div_volver}>
+        <Link to="/countries">
+          <button className={s.btn_volver}>Go Home</button>
+        </Link>
+      </div>
     </div>
   );
 }
