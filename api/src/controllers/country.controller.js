@@ -15,7 +15,7 @@ const getCountries = async (req, res) => {
         res.status(200).json(countries)
         } 
         else if(name){
-            //console.log(name);
+            console.log(name);
             const countrySearch = await Country.findAll({
                 where: {
                     name:   {[Op.iLike]: `%${name}%`},
@@ -30,6 +30,22 @@ const getCountries = async (req, res) => {
                 res.status(404).send("Country not found");
             }
         }
+        // else if(countries){
+        //     console.log(countries);
+        //     const countrySearch = await Country.findAll({
+        //         where: {
+        //             countries:   {[Op.iLike]: `%${name}%`},
+        //         },
+        //         include: {
+        //             model: Activity
+        //         }
+        //     })
+        //     if(countrySearch.length > 0){
+        //         res.json(countrySearch);
+        //     }else{
+        //         res.status(404).send("Country not found");
+        //     }
+        // }
         // else if(filter){
         //     //console.log("esto es filter", filter)
         //     const filters = await Country.findAll({
@@ -113,6 +129,7 @@ const getCountryId = async (req, res) => {
 //         console.error(error);
 //     }
 // }
+
 
 module.exports = {
     getCountries,

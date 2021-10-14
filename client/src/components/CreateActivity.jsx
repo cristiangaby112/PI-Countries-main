@@ -11,13 +11,11 @@ function validate(input) {
   let errors = {};
   if (!input.name) {
     errors.name = "Se requiere una Actividad";
-  } else if (!input.difficulty <= 0) {
+  } else if (input.difficulty <= 0 ) {
     errors.difficulty = "Se requiere una Dificultad";
   } else if (!input.duration) {
     errors.duration = "Se requiere una Duracion";
-  } else if (!input.season) {
-    errors.season = "Se requiere una Temporada";
-  }
+  } 
   return errors;
 }
 
@@ -27,7 +25,8 @@ export default function CreateActivity() {
   //const activities = useSelector((state) => state.activities)
   const allCountries = useSelector((state) => state.countries);
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({})
+  console.log('aca el set', errors);;
   // estado local de input
   const [input, setInput] = useState({
     name: "",
@@ -57,7 +56,8 @@ export default function CreateActivity() {
         [e.target.name]: e.target.value,
       })
     );
-    console.log(input);
+    console.log('aca el input', input);
+    
   }
 
   function handleDelete(el) {
@@ -85,7 +85,7 @@ export default function CreateActivity() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(input);
+    //console.log('aca creado actividad',input);
     dispatch(postActivity(input));
     alert("Pais Creado");
     setInput({
@@ -108,38 +108,38 @@ export default function CreateActivity() {
             <div className={s.container_input}>
               <label className={s.label}>Name Activity</label>
               <input
-                placeholder='Name Activity...'
+                placeholder="Name Activity..."
                 className={s.input}
                 type="text"
                 value={input.name}
                 name="name"
                 onChange={(e) => handleInputChange(e)}
               />
-              {errors.name && <p>{errors.name}</p>}
+              {errors.name && <p className={s.errors}>{errors.name}</p>}
             </div>
             <div className={s.container_input}>
               <label className={s.label}>Difficulty</label>
               <input
-                placeholder='1 to 10'
+                placeholder="1 to 10"
                 className={s.input}
                 type="number"
                 value={input.difficulty}
                 name="difficulty"
                 onChange={(e) => handleInputChange(e)}
               />
-              {errors.difficulty && <p>{errors.difficulty}</p>}
+              {errors.difficulty && <p className={s.errors}>{errors.difficulty}</p>}
             </div>
             <div className={s.container_input}>
               <label className={s.label}>Duration</label>
               <input
-                placeholder='20 days , 10 weeks , 4 months'
+                placeholder="20 days , 10 weeks , 4 months"
                 className={s.input}
                 type="text"
                 value={input.duration}
                 name="duration"
                 onChange={(e) => handleInputChange(e)}
               />
-              {errors.duration && <p>{errors.duration}</p>}
+              {errors.duration && <p className={s.errors}>{errors.duration}</p>}
             </div>
             <p className={s.p}>Season</p>
             <div className={s.checkbox}>
@@ -152,7 +152,9 @@ export default function CreateActivity() {
                   value="Verano"
                   onChange={(e) => handleCheckboxChange(e)}
                 />
-                <label htmlFor="Verano" className={s.labelinput}>Summer</label>
+                <label htmlFor="Verano" className={s.labelinput}>
+                  Summer
+                </label>
               </div>
               <div className={s.checkbox2}>
                 <input
@@ -163,7 +165,9 @@ export default function CreateActivity() {
                   value="Otoño"
                   onChange={(e) => handleCheckboxChange(e)}
                 />
-                <label htmlFor="Otoño" className={s.labelinput}>Autumn</label>
+                <label htmlFor="Otoño" className={s.labelinput}>
+                  Autumn
+                </label>
               </div>
               <div className={s.checkbox2}>
                 <input
@@ -174,7 +178,9 @@ export default function CreateActivity() {
                   value="Invierno"
                   onChange={(e) => handleCheckboxChange(e)}
                 />
-                <label htmlFor="Invierno" className={s.labelinput}>Winter</label>
+                <label htmlFor="Invierno" className={s.labelinput}>
+                  Winter
+                </label>
               </div>
               <div className={s.checkbox2}>
                 <input
@@ -185,34 +191,41 @@ export default function CreateActivity() {
                   value="Primavera"
                   onChange={(e) => handleCheckboxChange(e)}
                 />
-                <label htmlFor="Primavera" className={s.labelinput}>Spring</label>
+                <label htmlFor="Primavera" className={s.labelinput}>
+                  Spring
+                </label>
               </div>
             </div>
           </div>
           <div className={s.card_select}>
-            <select className={s.select} onChange={(e) => handleSelect(e)}>
+            <select required className={s.select} onChange={(e) => handleSelect(e)}>
               {allCountries.map((c) => {
-                return <option className={s.option} key={c.id} value={c.id}>{c.name}</option>;
+                return (
+                  <option className={s.option} key={c.id} value={c.id}>
+                    {c.name}
+                  </option>
+                );
               })}
             </select>
           </div>
           <ul>
-            <p>{input.countries.map((el) => el + ", ")}</p>
+            <p className={s.pp}>{input.countries.map((el) => el + ", ")}</p>
           </ul>
           <div className={s.divselect}>
-        {input.countries.map((el) => (
-          <div className={s.optioni}>
-            <div>
-              <p>{el}</p>
-            </div>
-            <div>
-              <button className={s.btn} onClick={() => handleDelete(el)}>x</button>
-            </div>
+            {input.countries.map((el) => (
+              <div className={s.optioni} key={el}>
+                <p >{el}</p>
+
+                <button className={s.btn} onClick={() => handleDelete(el)}>
+                  x
+                </button>
+              </div>
+            ))}
           </div>
-        ))}
-        </div>
           <div className={s.div_btn}>
-            <button className={s.btn_create} type="submit">Create</button>
+            <button className={s.btn_create} type="submit" >
+              Create
+            </button>
           </div>
         </form>
       </div>

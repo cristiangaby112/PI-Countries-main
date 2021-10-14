@@ -9,6 +9,8 @@ export const ORDER_BY_POPULATION = 'ORDER_BY_POPULATION'
 export const GET_COUNTRIES_NAME = 'GET_COUNTRIES_NAME'
 export const GET_ACTIVITIES = 'GET_ACTIVITIES'
 export const GET_DETAIL = 'GET_DETAIL'
+
+
 //ACTIONS
 
 export function getCountries(){
@@ -70,7 +72,7 @@ export function postActivity(payload){
 
 
 export function filterCountriesByRegion(payload){
-    //console.log(payload);
+    //console.log('soy el filtro por region',payload);
     return{
         type: 'FILTER_BY_REGION',
         payload
@@ -78,7 +80,7 @@ export function filterCountriesByRegion(payload){
 }
 
 export function filterActivity(payload){
-    //console.log(payload);
+    console.log('soy el filtro por actividad',payload);
     return{
         type: 'FILTER_ACTIVITY',
         payload

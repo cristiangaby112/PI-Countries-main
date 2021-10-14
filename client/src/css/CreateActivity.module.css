@@ -43,7 +43,7 @@
     outline: none;
     background-color: #D1E8E4;
     border-radius: 5px;
-    color: #fff;
+    color: #333030;
 }
 .input::placeholder{
   font-size: 0.7em;
@@ -255,4 +255,12 @@ box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 
 .btn_volver:focus {
 box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+.pp{
+  color:#333030;
+}
+
+.errors{
+  color:#f7505a;
 }

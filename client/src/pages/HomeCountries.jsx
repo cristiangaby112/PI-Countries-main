@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { useState, useEffect } from "react";
+// import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getCountries,
@@ -19,15 +20,17 @@ export default function HomeCountries() {
   const dispatch = useDispatch();
   const allCountries = useSelector((state) => state.countries);
   const activities = useSelector((state) => state.activities);
-  //const history = useHistory();
   //console.log('aca estoy wey',allCountries)
 
-  //estado local para el paginado
+  //estado local con la pagina actual y un estado que me setee la pagina actual setea en un 1 por que quiero que empieze en un 1
   const [currentPages, setCurrentPages] = useState(1);
-  //estado local para el paginados
+  //estado local cuanto paises por pagina y setear paise por pagina este caso (10)
   const [countriesPerPage, setCountriesPage] = useState(10);
-  const indexOfLastCountry = currentPages * countriesPerPage;
-  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+  //const indice del ultimo personaje va se la pagina actual(currentPages) en la que estoy por la cantida de paises por pagina(countriesPerPage)
+  const indexOfLastCountry = currentPages * countriesPerPage;//10
+  //const indice del primer pais va ser el indicie del ultimpo personaje menos los paises por pagina
+  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;//0
+  //const que guarda todos los paises por pagina se pasa por parametro el indice del primer personaje y el indice del ultimo personaje
   const currentCountries = allCountries.slice(
     indexOfFirstCountry,
     indexOfLastCountry
@@ -35,21 +38,20 @@ export default function HomeCountries() {
   // estado local para el ordenamiento
   // eslint-disable-next-line no-unused-vars
   const [order, setOrder] = useState("");
-  // estado local para filtros
-  //const [filter, setFilter] = useState("")
+  
   //PAGINADO
-
+  //const para mostrar los numeros de la pagina
   const paginado = (pagesNumber) => {
     setCurrentPages(pagesNumber);
   };
+  useEffect(() => {
+    dispatch(getActivity());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getCountries());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(getActivity());
-  }, [dispatch]);
 
   function handleClick(e) {
     e.preventDefault();
@@ -58,24 +60,27 @@ export default function HomeCountries() {
 
   function handleFilterRegion(e) {
     dispatch(filterCountriesByRegion(e.target.value));
+    setCurrentPages(1)
   }
 
   function handleFilterActivity(e) {
     dispatch(filterActivity(e.target.value));
     console.log(e.target.value);
-    //history.push('/activity/list')
+    setCurrentPages(1)
   }
   function handleSortByName(e) {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
-    setCountriesPage(10);
+    setCountriesPage(10); // cuanto paises traer por pagina de ordenado por nombre
     setOrder(`Ordenado ${e.target.value}`);
+    setCurrentPages(1)
   }
   function handleSortByPopulation(e) {
     e.preventDefault();
     dispatch(orderByPopulation(e.target.value));
-    setCountriesPage(10);
+    setCountriesPage(10); // cuanto paises traer por pagina de ordenado por poblacion
     setOrder(`Ordenado ${e.target.value}`);
+    setCurrentPages(1)
   }
 
   return (
@@ -85,6 +90,7 @@ export default function HomeCountries() {
 
       <div className={s.filter}>
         <select onChange={(e) => handleFilterRegion(e)} className={s.select}>
+          <option value='Filter Region' disable="true">Filter Region</option>
           <option value="All">All</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>
@@ -95,7 +101,7 @@ export default function HomeCountries() {
         </select>
 
         <select onChange={(e) => handleFilterActivity(e)} className={s.select}>
-          <option disable="">Filter Activity</option>
+          <option value='Filter Activity' disable="true" >Filter Activity</option>
           {/* <option value='All'>Todas las actividades</option> */}
           {activities?.map((c) => {
             return (
@@ -107,7 +113,7 @@ export default function HomeCountries() {
         </select>
 
         <select onChange={(e) => handleSortByName(e)} className={s.select}>
-          <option disable="">Sorted by Name</option>
+          <option value='Sorted by Name' disable="true" >Sorted by Name</option>
           <option value="ASC">Ascending by Name</option>
           <option value="DESC">Descent by Name </option>
         </select>
@@ -116,7 +122,7 @@ export default function HomeCountries() {
           onChange={(e) => handleSortByPopulation(e)}
           className={s.select}
         >
-          <option disable="">Sorted by Population</option>
+          <option value='Sorted by Population' disable="true" >Sorted by Population</option>
           <option value="ASC">Ascending by Population</option>
           <option value="DESC">Descent by Population</option>
         </select>
