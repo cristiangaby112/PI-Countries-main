@@ -5,6 +5,8 @@ const db = async() => {
     // const data = fs.readFile('countries.json', 'utf8');
     // console.log(data);
     try {
+				const country = await Country.findAll()
+				if(country.length === 0) {
         fs.readFile('countries.json', async(err, data) => {
             const countries = JSON.parse(data);
             //console.log(countries);
@@ -24,6 +26,7 @@ const db = async() => {
             }
         });
     }
+	}
     catch (err) {
         console.log(err);
     }

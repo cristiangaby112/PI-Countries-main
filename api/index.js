@@ -21,7 +21,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const db  = require('./InitDb')
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() =>{
+conn.sync({ force: false }).then(() =>{
   db()
 }).then(() => {
   server.listen(process.env.PORT, () => {
