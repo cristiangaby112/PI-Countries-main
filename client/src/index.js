@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './store/index';
-
+import dotenv from 'dotenv';
 //ESTILOS GLOBALES
-import './css/normalize.css'
-import './css/Global.css'
+import './css/normalize.css';
+import './css/Global.css';
+
+dotenv.config();
+
+axios.defaults.baseURL = process.env.REACT_APP_API || 'http://localhost:3001';
+
+
 
 ReactDOM.render(
   <Provider store={store}>

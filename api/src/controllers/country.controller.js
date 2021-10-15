@@ -103,36 +103,10 @@ const getCountryId = async (req, res) => {
     }
 }
 
-// const getCountryQuery = async (req, res) => {
-//     try {
-//         console.log("me ejecute")
-//         const {name} = req.query;
-//         console.log(name);
-//         const country = await Country.findAll({
-//             where: {
-//                 name:   {[Op.iLike]: `%${name}%`},
-//             }
-//         })
-//         res.json(country);
-//         // let countryTotal = await Country();
-//         // if(name){
-//         //     let countryName = await countryTotal.filter(country => country.name.toLowerCase().include(name.toLowerCase()));
-//         //     //console.log(countryName);
-//         //     countryName.length ?
-//         //     res.status(200).send(countryName) :
-//         //     res.status(404).send('The country cannot be found');
-//         // }else{
-//         //     res.status(200).send(countryTotal);
-//         // }
 
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
 
 
 module.exports = {
     getCountries,
-    getCountryId,
-    //getCountryQuery
+    getCountryId
 }
